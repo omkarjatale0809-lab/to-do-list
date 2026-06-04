@@ -106,3 +106,24 @@ function addTask() {
     taskInput.value = "";
     taskInput.focus();
 }
+// Mark Complete / Incomplete
+checkbox.addEventListener("change", function () {
+
+    if (checkbox.checked) {
+
+        span.classList.add("completed");
+
+        // Play animation
+        li.classList.add("task-complete-animation");
+
+        li.addEventListener("animationend", () => {
+            li.classList.remove("task-complete-animation");
+        }, { once: true });
+
+    } else {
+
+        span.classList.remove("completed");
+        li.style.backgroundColor = "";
+
+    }
+});
