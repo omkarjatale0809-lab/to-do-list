@@ -41,3 +41,27 @@ taskInput.addEventListener("keypress", function (event) {
     }
 
 });
+function addTask() {
+    const taskText = taskInput.value.trim();
+
+    if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+    }
+
+    const li = document.createElement("li");
+    li.textContent = taskText;
+
+    // Add animation class
+    li.classList.add("new-task");
+
+    taskList.appendChild(li);
+
+    // Remove animation class after animation ends
+    li.addEventListener("animationend", () => {
+        li.classList.remove("new-task");
+    });
+
+    taskInput.value = "";
+    taskInput.focus();
+}
