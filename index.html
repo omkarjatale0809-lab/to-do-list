@@ -4,94 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List Application</title>
+    <link rel="stylesheet" href="styles.css">
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family: Arial, sans-serif;
-        }
 
-        body{
-            background:#f4f4f4;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            min-height:100vh;
-        }
-
-        .container{
-            width:400px;
-            background:#fff;
-            padding:20px;
-            border-radius:10px;
-            box-shadow:0 0 10px rgba(0,0,0,0.1);
-        }
-
-        h1{
-            text-align:center;
-            margin-bottom:20px;
-        }
-
-        .input-section{
-            display:flex;
-            gap:10px;
-            margin-bottom:20px;
-        }
-
-        .input-section input{
-            flex:1;
-            padding:10px;
-            border:1px solid #ccc;
-            border-radius:5px;
-        }
-
-        .input-section button{
-            padding:10px 15px;
-            border:none;
-            background:#007bff;
-            color:white;
-            border-radius:5px;
-            cursor:pointer;
-        }
-
-        .task-section h2{
-            margin-bottom:10px;
-        }
-
-        #taskList{
-            list-style:none;
-        }
-
-        #taskList li{
-            padding:10px;
-            border:1px solid #ddd;
-            margin-bottom:8px;
-            border-radius:5px;
-            background:#fafafa;
-        }
-    </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>My To-Do List</h1>
+        <h1>📝 To-Do List</h1>
 
-        <!-- Input Section -->
         <div class="input-section">
-            <input type="text" id="taskInput" placeholder="Enter a task">
-            <button>Add</button>
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter a new task..."
+            >
+            <button id="addTaskBtn">Add Task</button>
         </div>
 
-        <!-- Task Display Section -->
-        <div class="task-section">
-            <h2>Tasks</h2>
-            <ul id="taskList">
-                <!-- Tasks will appear here -->
-            </ul>
-        </div>
+        <ul id="taskList">
+            <li>Complete project setup</li>
+            <li>Design user interface</li>
+        </ul>
     </div>
-
+</body>
 </body>
 </html>

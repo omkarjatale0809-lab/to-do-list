@@ -1,0 +1,111 @@
+/* Reset Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Main Container */
+.container {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Input Section */
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Input Field */
+.input-section input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-section input:focus {
+    border-color: #4a90e2;
+}
+
+/* Add Button */
+.input-section button {
+    padding: 12px 18px;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.input-section button:hover {
+    background: #357abd;
+}
+
+/* Task List */
+#taskList {
+    list-style: none;
+}
+
+/* Task Item */
+#taskList li {
+    background: #f8f9fa;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-left: 4px solid #4a90e2;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+#taskList li:hover {
+    transform: translateX(5px);
+    background: #eef5ff;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+
+    .container {
+        padding: 20px;
+    }
+
+    .input-section {
+        flex-direction: column;
+    }
+
+    .input-section button {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
