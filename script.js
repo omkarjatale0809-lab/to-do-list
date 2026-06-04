@@ -65,3 +65,44 @@ function addTask() {
     taskInput.value = "";
     taskInput.focus();
 }
+function addTask() {
+    const taskText = taskInput.value.trim();
+
+    if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+    }
+
+    // Create Task Item
+    const li = document.createElement("li");
+    li.classList.add("task-item", "new-task");
+
+    // Create Checkbox
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList.add("task-checkbox");
+
+    // Create Task Text
+    const span = document.createElement("span");
+    span.textContent = taskText;
+    span.classList.add("task-text");
+
+    // Mark Complete / Incomplete
+    checkbox.addEventListener("change", function () {
+        span.classList.toggle("completed");
+    });
+
+    // Append Elements
+    li.appendChild(checkbox);
+    li.appendChild(span);
+
+    taskList.appendChild(li);
+
+    // Remove animation class after animation ends
+    li.addEventListener("animationend", () => {
+        li.classList.remove("new-task");
+    });
+
+    taskInput.value = "";
+    taskInput.focus();
+}
