@@ -127,3 +127,17 @@ checkbox.addEventListener("change", function () {
 
     }
 });
+// Create Delete Button
+const deleteBtn = document.createElement("button");
+deleteBtn.textContent = "🗑";
+deleteBtn.classList.add("delete-btn");
+// Delete Task with Animation
+deleteBtn.addEventListener("click", function () {
+
+    li.classList.add("delete-animation");
+
+    li.addEventListener("animationend", () => {
+        li.remove();
+    }, { once: true });
+
+});
