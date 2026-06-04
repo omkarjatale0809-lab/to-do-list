@@ -14,65 +14,6 @@ function addTask() {
         return;
     }
 
-    // Create new list item
-    const li = document.createElement("li");
-
-    // Add task text
-    li.textContent = taskText;
-
-    // Append to task list
-    taskList.appendChild(li);
-
-    // Clear input field
-    taskInput.value = "";
-
-    // Focus back on input
-    taskInput.focus();
-}
-
-// Button Click Event
-addTaskBtn.addEventListener("click", addTask);
-
-// Enter Key Event
-taskInput.addEventListener("keypress", function (event) {
-
-    if (event.key === "Enter") {
-        addTask();
-    }
-
-});
-function addTask() {
-    const taskText = taskInput.value.trim();
-
-    if (taskText === "") {
-        alert("Please enter a task!");
-        return;
-    }
-
-    const li = document.createElement("li");
-    li.textContent = taskText;
-
-    // Add animation class
-    li.classList.add("new-task");
-
-    taskList.appendChild(li);
-
-    // Remove animation class after animation ends
-    li.addEventListener("animationend", () => {
-        li.classList.remove("new-task");
-    });
-
-    taskInput.value = "";
-    taskInput.focus();
-}
-function addTask() {
-    const taskText = taskInput.value.trim();
-
-    if (taskText === "") {
-        alert("Please enter a task!");
-        return;
-    }
-
     // Create Task Item
     const li = document.createElement("li");
     li.classList.add("task-item", "new-task");
@@ -87,57 +28,67 @@ function addTask() {
     span.textContent = taskText;
     span.classList.add("task-text");
 
+    // Create Delete Button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "🗑";
+    deleteBtn.classList.add("delete-btn");
+
     // Mark Complete / Incomplete
     checkbox.addEventListener("change", function () {
-        span.classList.toggle("completed");
+
+        if (checkbox.checked) {
+
+            span.classList.add("completed");
+
+            // Completion Animation
+            li.classList.add("task-complete-animation");
+
+            li.addEventListener("animationend", () => {
+                li.classList.remove("task-complete-animation");
+            }, { once: true });
+
+        } else {
+
+            span.classList.remove("completed");
+        }
+    });
+
+    // Delete Task with Animation
+    deleteBtn.addEventListener("click", function () {
+
+        li.classList.add("delete-animation");
+
+        li.addEventListener("animationend", () => {
+            li.remove();
+        }, { once: true });
+
     });
 
     // Append Elements
     li.appendChild(checkbox);
     li.appendChild(span);
+    li.appendChild(deleteBtn);
 
     taskList.appendChild(li);
 
-    // Remove animation class after animation ends
+    // Remove New Task Animation Class
     li.addEventListener("animationend", () => {
         li.classList.remove("new-task");
-    });
+    }, { once: true });
 
+    // Clear Input
     taskInput.value = "";
     taskInput.focus();
 }
-// Mark Complete / Incomplete
-checkbox.addEventListener("change", function () {
 
-    if (checkbox.checked) {
+// Button Click Event
+addTaskBtn.addEventListener("click", addTask);
 
-        span.classList.add("completed");
+// Enter Key Event
+taskInput.addEventListener("keypress", function (event) {
 
-        // Play animation
-        li.classList.add("task-complete-animation");
-
-        li.addEventListener("animationend", () => {
-            li.classList.remove("task-complete-animation");
-        }, { once: true });
-
-    } else {
-
-        span.classList.remove("completed");
-        li.style.backgroundColor = "";
-
+    if (event.key === "Enter") {
+        addTask();
     }
-});
-// Create Delete Button
-const deleteBtn = document.createElement("button");
-deleteBtn.textContent = "🗑";
-deleteBtn.classList.add("delete-btn");
-// Delete Task with Animation
-deleteBtn.addEventListener("click", function () {
-
-    li.classList.add("delete-animation");
-
-    li.addEventListener("animationend", () => {
-        li.remove();
-    }, { once: true });
 
 });
